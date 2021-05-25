@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김수환 일기장</title>
+    <style>
+        .backgroundimg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: repeat-y;
+            opacity: 0.5;
+        }
+        
+        body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+      </style>
+</head>
+<body>
+    <div>
+        {% load static %}
+        <img class="backgroundimg" src="{% static 'ocean_wave.png' %}">
+        {% if user.is_authenticated %}
+        <h1>Diaryname : {{user.username}} 일기장📜✏</h1>
+        <p>반갑습니다 {{user.username}} 님!</p>
+        <a href="{% url 'userlogout' %}">Logout</a>
+        {% endif %}
+        {% if not user.is_authenticated %}
+        <h1> 로그인이 필요합니다 </h1>
+        <a href="{% url 'userlogin' %}">Login</a>
+        <a href="{% url 'userregister' %}">Signup</a>
+        {% endif %}
+    </div>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

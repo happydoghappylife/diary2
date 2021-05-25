@@ -1,0 +1,12 @@
+{% extends 'diarybase.html' %}
+
+{% block content %}
+<body style="text-align: center;">
+    <h1> Write your diary </h1>
+    <form action="{% url 'creatediary' %}" method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit">작성하기</button>
+    </form>
+    <h4><a href="{% url 'diaryindex'%}"> 목차로 돌아가기 </a></h4>
+{% endblock %}

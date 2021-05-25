@@ -1,0 +1,13 @@
+{% extends 'diarybase.html' %}
+
+{% block content %}
+    <h1> Update your diary </h1>
+    <form action="{% url 'update' contents.id %}" method="POST">
+        {%csrf_token%}
+        <h4>제목 : <input type="text" name="diarytitle" value="{{contents.title}}"></h4>
+        <p>본문 : <textarea name="diarybody" cols="30" rows="10">{{contents.body}}</textarea></p>
+        <p>사진 : <input type="file" name="image" value="{{contents.image}}"></p>
+        <button type="submit">작성하기</button>
+    </form>
+    <h4><a href="{% url 'diaryindex'%}"> 목차로 돌아가기 </a></h4>
+{% endblock %}

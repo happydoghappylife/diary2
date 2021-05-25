@@ -1,0 +1,11 @@
+{% extends 'diarybase.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <h3>지금까지 쓴 일기는? : {{diarynum}}</h3>
+    <div>
+        <a href="{%url 'diaryindex' %}"> 목차로 넘어가기➡➡ </a>
+    </div>
+    {% endif %}
+{% endblock %}
+    

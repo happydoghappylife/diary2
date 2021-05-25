@@ -1,0 +1,17 @@
+{% extends 'diarybase.html' %}
+
+{% block content %}
+    <h1>{{contents.title}}</h1>
+    <div>
+        {{contents.body}}
+    </div>
+    {% if contents.image %}
+    <p><img src="{{contents.image.url}}"></p>
+    {% endif %}
+    <br>
+    <div>
+        <h3><a href="{% url 'diaryupdate' contents.id %}"> 수정하기 </a></h3>
+        <h3><a href="{% url 'delete' contents.id %}"> 삭제하기 </a></h3>
+        <h3><a href="{% url 'diaryindex'%}"> 목차로 돌아가기 </a></h3> 
+    </div>
+{% endblock %}

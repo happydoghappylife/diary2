@@ -1,0 +1,16 @@
+{% extends 'diarybase.html' %}
+
+{% block content %}    
+    <h3> 목 차 🧐</h3>
+    <div>
+        <a href="{% url 'newdiary' %}"><button> 새 일기 쓰기 ✏</button></a>
+    </div>
+    <div class="container">
+        {% for contents in diarycontents %}
+            <a href="{% url 'diarydetails' contents.id %}"><h3>{{contents.title}}</h3></a>
+        {% endfor %}
+    </div>
+    <div>
+        <h3><a href="{% url 'diarycover' %}"> Cover </a></h3>
+    </div>
+{% endblock %}
